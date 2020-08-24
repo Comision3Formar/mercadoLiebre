@@ -1,0 +1,82 @@
+/*
+-- IMPORTS
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+
+/*
+-- VARIABLES 
+*/
+:root{
+    --color-amarillo: #EAC926;
+    --color-grisClaro: #ebebeb;
+    --color-grisOscuro: #666666;
+    --color-azul: #03264C;
+    --color-verde: #39b54a;
+    --color-celeste: #1259c3;
+}
+
+
+/*
+-- GENERALES
+*/
+*{
+    box-sizing: border-box;
+    margin:0
+}
+body{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    background-color: var(--color-grisClaro);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+/*
+-- HEADER
+*/
+
+header{
+    background-color: var(--color-amarillo);
+    padding: 20px;
+}
+
+header .logo{
+    padding: 0;
+}
+
+header form{
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+
+}
+header form input{
+    border: solid 1px var(--color-grisClaro);
+display: block;
+width: 100%;
+padding: 7px 35px 7px 7px;
+border-radius: 5px;
+height: 40px;
+}
+
+header form button{
+    position: absolute;
+    right: 2px;
+    height: 60%;
+    background-color: white;
+    border: none;
+    border-left: solid 1px var(--color-grisClaro);
+    color: var(--color-grisOscuro);
+    cursor: pointer;
+}
