@@ -214,6 +214,8 @@ FOOTER
         text-align: right;
     }
 
+
+
     header ul li{
         padding-right: 12px;
         margin-top:10px;
@@ -241,5 +243,5 @@ FOOTER
     .productos article i {
         
         font-size: 20px;
-      
+    }
 }
