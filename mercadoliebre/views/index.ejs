@@ -27,9 +27,12 @@
               </figure>
               <article>
                 <h2>
-                  $<%= producto.price %> 
+                  $<%- (producto.price - producto.price * producto.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %>
                 </h2>
-                <span><%= producto.discount %>% OFF</span>
+                <% if (producto.discount !=0) { %>
+                  <span><%= producto.discount %>% OFF</span>
+                <% } %>
+             
                 <p><%= producto.name %> </p>
                 <i class="fas fa-truck"></i>
               </article>
@@ -55,9 +58,11 @@
                 </figure>
                 <article>
                   <h2>
-                    $<%= producto.price %> 
+                    $<%- (producto.price - producto.price * producto.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %>
                   </h2>
-                  <span><%= producto.discount %>% OFF</span>
+                  <% if (producto.discount !=0) { %>
+                    <span><%= producto.discount %>% OFF</span>
+                  <% } %>
                   <p><%= producto.name %> </p>
                   <i class="fas fa-truck"></i>
                 </article>

@@ -25,6 +25,12 @@ border-radius: 5px;
 height: 40px;
 }
 
+header form input:focus,
+form button:focus {
+    outline: none;
+    background-color: white;
+}
+
 header form button{
     position: absolute;
     right: 2px;

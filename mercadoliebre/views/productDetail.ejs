@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-8">
                         <figure class="text-center">
-                            <img src="<%= producto.image %> " alt="imagen del producto" class="img-fluid">
+                            <img src="/images/products/<%= producto.image %> " alt=<%= producto.image %> class="img-fluid">
                         </figure>
                         <p>
                            <%= producto.description %> 
@@ -24,9 +24,9 @@
                         <h3 class="my-4">
                            <%= producto.name %> 
                         </h3>
-                            <span><%= producto.price %>  <strong><%= producto.discount %>  % OFF</strong></span>
-                                <h2>$
-                                  <%= producto.price %> 
+                            <span><strike>$<%= producto.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></strike> <strong> <%= producto.discount %>  % OFF</strong></span>
+                                <h2>
+                                  $<%- (producto.price - producto.price * producto.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %> 
                                 </h2>
                                 <p><i class="fas fa-credit-card mr-3 my-4"></i>Pagá en 12 cuotas sin interés</p>
                                 <p><i class="fas fa-store mr-3 my-4"></i>Retiro gratis en locales del vendedor</p>

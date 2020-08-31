@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head') %> 
+<body>
+    <%- include('partials/header') %> 
+    <section class="principal">
+        <div class="container">
+            <div class="row">
+              <div class="col-12 titulo">
+                <h2><%= title %></h2>
+              </div>
+    
+              <% productos.forEach(producto => { %>
+     
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="contenido">
+                  <figure>
+                    <a href="/products/detalle/<%= producto.id %> "
+                      ><img src="/images/products/<%= producto.image %> " alt=""
+                    /></a>
+                  </figure>
+                  <article>
+                    <h2>
+                      $<%- (producto.price - producto.price * producto.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %>
+                    </h2>
+                    <% if (producto.discount !=0) { %>
+                      <span><%= producto.discount %>% OFF</span>
+                    <% } %>
+                 
+                    <p><%= producto.name %> </p>
+                    <i class="fas fa-truck"></i>
+                  </article>
+                </div>
+              </div>
+              <% }) %>
+              
+            </div>
+
+            
+            </div>
+        </div>
+      </section>
+    <%- include('partials/footer') %> 
+
+</body>
+</html>
