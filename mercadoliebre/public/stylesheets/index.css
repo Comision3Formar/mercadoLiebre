@@ -1,3 +1,4 @@
+@import "style.css";
 
 /*-- BANNER --*/
 
@@ -44,7 +45,6 @@
     top: -22px;
     right: 20px;
 }
-@import "style.css";
 
 /* --- AJUSTES HOME - VERSION PARA TABLET (768px) --- */
 
