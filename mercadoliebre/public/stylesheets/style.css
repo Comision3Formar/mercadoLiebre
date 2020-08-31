@@ -17,9 +17,7 @@
 }
 
 
-/*
--- GENERALES
-*/
+/* -- GENERALES --*/
 *{
     box-sizing: border-box;
     margin:0
@@ -41,9 +39,7 @@ li{
     list-style: none;
 }
 
-/*
--- HEADER
-*/
+/*-- HEADER --*/
 
 header{
     background-color: var(--color-amarillo);
@@ -100,28 +96,19 @@ header nav button.burger{
     padding: 10px 15px;
 }
 
-/*
--- BANNER
-*/
-
-.banner img{
-    width: 100%;
-    display: none;
-}
-
-.productos{
+.principal{
     display: flex;
     flex-wrap: wrap;
 }
 
-.productos .titulo h2{
+.principal .titulo h2{
     text-align: left;
     font-size: 24px;
     color: var(--color-grisOscuro);
     padding: 30px;
 }
 
-.productos .contenido{
+.principal .contenido{
     background-color: white;
     margin-bottom: 30px;
     border-radius: 5px;
@@ -129,11 +116,22 @@ header nav button.burger{
     text-align: center;
 }
 
-.productos .contenido figure img{
+/* -----CSS DEL HOME -----*/
+
+/*-- BANNER --*/
+
+.banner img{
+    width: 100%;
+    display: none;
+}
+
+/*-- PRODUCTO --*/
+
+.principal .contenido figure img{
     width: 90%;
 }
 
-.productos article{
+.principal article{
     display: flex;
     flex-wrap: wrap;
     border-top: 1px solid var(--color-grisClaro);
@@ -142,19 +140,19 @@ header nav button.burger{
     height: 150px;
 }
 
-.productos article h2{
+.principal article h2{
     display: flex;
     align-items: center;
 }
 
-.productos article span{
+.principal article span{
     color: var(--color-verde);
     margin-left: 10px;
     display: flex;
     align-items: center;
 }
 
-.productos article i {
+.principal article i {
     color: var(--color-verde);
     background-color: white;
     border: 1px solid var(--color-verde);
@@ -205,7 +203,7 @@ FOOTER
     color: var(--color-grisOscuro);
 }
 
-/* --- VERSION PARA TABLET (768px) --- */
+/* --- AJUSTES HOME - VERSION PARA TABLET (768px) --- */
 
 @media(min-width:768px){
 
@@ -225,22 +223,20 @@ FOOTER
         padding-right: 0;
     }
 
-    /*
--- BANNER
-*/
+    /* -- BANNER -- */
 
 .banner img{
     display: block;
 }
 }
 
-/* --- VERSION PARA ESCRITORIO (1024px) --- */
+/* --- AJUSTES HOME - VERSION PARA ESCRITORIO (1024px) --- */
 
 @media(min-width:1024px){
-    .productos article h2{
+    .principal article h2{
        font-size: 1.3rem;
     }
-    .productos article i {
+    .principal article i {
         
         font-size: 20px;
     }
