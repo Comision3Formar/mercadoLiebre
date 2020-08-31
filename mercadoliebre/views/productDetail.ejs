@@ -2,9 +2,10 @@
 <html lang="es">
 <%- include('partials/head') %> 
 <body>
-    <%- include('partials/header') %>    <div class="container">
+    <%- include('partials/header') %>    
+    <div class="container">
         <section class="principal">
-          <div class="row">
+          <div class="row detalle">
             <div class="col-12 titulo">
               <h2><%= title %> </h2>
             </div>
@@ -13,19 +14,19 @@
                 <div class="row">
                     <div class="col-12 col-lg-8">
                         <figure class="text-center">
-                            <img src=" " alt="imagen del producto" class="img-fluid">
+                            <img src="<%= producto.image %> " alt="imagen del producto" class="img-fluid">
                         </figure>
                         <p>
-                            descripcion del producto
+                           <%= producto.description %> 
                         </p>
                     </div>
                     <div class="col-12 col-lg-4 datos">
                         <h3 class="my-4">
-                           nombre del producto
+                           <%= producto.name %> 
                         </h3>
-                            <span>precio de lista<strong>descuento % OFF</strong></span>
+                            <span><%= producto.price %>  <strong><%= producto.discount %>  % OFF</strong></span>
                                 <h2>$
-                                  precio final
+                                  <%= producto.price %> 
                                 </h2>
                                 <p><i class="fas fa-credit-card mr-3 my-4"></i>Pagá en 12 cuotas sin interés</p>
                                 <p><i class="fas fa-store mr-3 my-4"></i>Retiro gratis en locales del vendedor</p>

@@ -1,0 +1,68 @@
+@import "style.css";
+
+.detalle h2 {
+    margin-top: 30px;
+}
+
+.detalle .contenido {
+    padding: 20px;
+}
+
+.detalle span,
+.detalle i {
+    color: var(--color-verde);
+}
+
+.detalle .precio {
+    text-decoration: line-through;
+}
+
+
+.detalle button {
+    background-color: var(--color-celeste);
+    border: 0;
+    color: white;
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+.addProduct .categorias {
+    padding: 40px 40px 20px 40px;
+}
+
+.addProduct .formulario {
+    padding: 20px 40px 40px 40px;
+}
+
+@media(min-width:768px) {
+    .addProduct .categorias {
+        padding: 40px 20px 40px 40px;
+    }
+    .addProduct .formulario {
+        padding: 40px 40px 40px 20px;
+    }
+}
+
+@media(min-width:1024px) {
+    .detalle h2 {
+        font-size: 3em;
+        font-weight: 300;
+    }
+    .detalle img {
+        width: 80%;
+    }
+    .detalle .datos {
+        border-left: 2px solid var(--color-grisClaro);
+    }
+}
+
+@media(min-width:1440px) {
+    .addProduct .categorias {
+        padding: 60px 20px 60px 60px;
+    }
+    .addProduct .formulario {
+        padding: 60px 60px 60px 20px;
+    }
+}

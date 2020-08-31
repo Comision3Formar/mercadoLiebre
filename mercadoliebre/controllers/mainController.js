@@ -13,6 +13,7 @@ module.exports = {
 
         res.render('index', { 
             title: 'Mercado Liebre',
+            css:'index.css',
             visitados: visitados,
             ofertas:ofertas
         });

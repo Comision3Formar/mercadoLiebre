@@ -6,8 +6,14 @@ module.exports = {
         res.send(dbProducts)
     },
     detalle:function(req,res){
+        idProducto = req.params.id;
+        let producto = dbProducts.filter(producto=>{
+            return producto.id == idProducto
+        })
         res.render('productDetail',{
-            title:"Detalle del Producto"
+            title:"Detalle del Producto",
+            css:"products.css",
+            producto:producto[0]
         })
     }
 }
