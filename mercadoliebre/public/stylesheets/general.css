@@ -1,0 +1,60 @@
+/*
+-- IMPORTS
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+
+/*
+-- VARIABLES 
+*/
+:root{
+    --color-amarillo: #EAC926;
+    --color-grisClaro: #ebebeb;
+    --color-grisOscuro: #666666;
+    --color-azul: #03264C;
+    --color-verde: #39b54a;
+    --color-celeste: #1259c3;
+}
+
+
+/* -- GENERALES --*/
+*{
+    box-sizing: border-box;
+    margin:0
+}
+body{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    background-color: var(--color-grisClaro);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+.principal{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.principal .titulo h2{
+    text-align: left;
+    font-size: 24px;
+    color: var(--color-grisOscuro);
+    padding: 30px;
+}
+
+.principal .contenido{
+    background-color: white;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}

@@ -1,0 +1,38 @@
+/*
+FOOTER
+*/
+
+.footer {
+    padding: 20px;
+    background-color: white;
+}
+
+.footer article {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer article i {
+    font-size: 35px;
+    color: var(--color-celeste);
+    display: flex;
+    margin: 10px 0;
+}
+
+.footer article h4,
+.footer article p {
+    color: var(--color-grisOscuro);
+    display: flex;
+    margin: 20px 0;
+}
+
+.copyright {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--color-grisClaro);
+    border-bottom: 1px solid var(--color-grisClaro);
+    color: var(--color-grisOscuro);
+}
