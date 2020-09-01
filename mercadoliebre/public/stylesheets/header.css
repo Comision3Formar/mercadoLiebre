@@ -28,7 +28,11 @@ height: 40px;
 header form input:focus,
 form button:focus {
     outline: none;
-    background-color: white;
+    box-shadow: none;
+}
+header form input,
+form button {
+    box-shadow: none;
 }
 
 header form button{

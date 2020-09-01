@@ -1,5 +1,6 @@
 const path = require('path');
 const dbProducts = require(path.join(__dirname,'..','data','dbProducts'))
+const dbCategorias = require('../data/dbCategorias');
 
 module.exports = {
     listar:function(req,res){
@@ -26,8 +27,26 @@ module.exports = {
         })
         res.render('products',{
             title: "Resultado de la busqueda",
-            css:"index.css",
+            css:"products.css",
             productos:productos
         })
+    },
+    agregar:function(req,res){
+        let categoria;
+        let sub;
+        if(req.query.categoria){
+            categoria = req.query.categoria;
+            sub = req.query.sub
+        }
+        res.render('productAdd',{
+            title: "Resultado de la busqueda",
+            css:"products.css",
+            categorias:dbCategorias,
+            categoria:categoria,
+            sub:sub
+        })
+    },
+    publicar:function(req,res){
+        res.send(req.body)
     }
 }

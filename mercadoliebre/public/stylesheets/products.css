@@ -35,6 +35,9 @@
 .addProduct .formulario {
     padding: 20px 40px 40px 40px;
 }
+.addProduct textarea{
+    resize: none;
+}
 
 @media(min-width:768px) {
     .addProduct .categorias {

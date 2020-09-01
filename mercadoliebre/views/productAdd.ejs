@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head')  %>
+
+    <body>
+        <%- include('partials/header')  %>
+
+            <div class="container">
+                <section class="principal">
+                    <div class="row addProduct">
+                        <div class="titulo col-12">
+                            <h2>
+                                <%= title %> 
+                            </h2>
+                        </div>
+                        <div class="col-12">
+                            <div class="contenido text-left">
+                                <div class="row">
+                                    <div class="col-12 col-md-5 col-xl-4 categorias">
+                                        <h5 class="mb-3">Categorias</h5>
+                                        <!--inicio la iteracion sobre las categorias-->
+                                        <% categorias.forEach(categoria => { %>
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="">
+                                                    <div class="card-header p-0" id="headingOne<%= categoria.id %> ">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-outline-dark btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne<%= categoria.id %>" aria-expanded="true" aria-controls="collapseOne<%= categoria.id %>">
+                                                                <%= categoria.name %> 
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <!--inicio la iteracion sobre las sub-categorias-->
+
+
+                                                    <div id="collapseOne<%= categoria.id %>" class="collapse" aria-labelledby="headingOne<%= categoria.id %> " data-parent="#accordionExample">
+                                                        <% categoria.sub.forEach(sub => { %>
+                                                            <!--<div class="card-body">
+                                                               
+                                                            </div>-->
+                                                            <div class="card">
+                                                                <ul class="list-group list-group-flush ">
+                                                                    <li class="list-group-item list-group-item-dark p-2">
+                                                                        <a href="/products/add/form/?categoria=<%= categoria.name %>&sub=<%=sub %> " class="ml-2">
+                                                                            <%= sub %>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <!--finalizo la iteracion de subcategorias-->
+                                                            <% }) %>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--finalizo la iteración de categorias-->
+                                            <% }) %>
+
+                                    </div>
+                                    <div class="col-12 col-md-7 col-xl-8 formulario">
+                                        <% if (categoria!=undefined) { %>
+
+                                            <div class="">
+                                                <h5 class="mb-3">Datos del Producto</h5>
+                                                <form action="" method="POST" >
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Categoría</label>
+                                                        <input type="text" class="form-control" id="exampleFormControlInput1" value="<%= sub%> " name="category">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Titulo de la publicación</label>
+                                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="name">
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <label for="">Precio</label>
+                                                            <input type="number" class="form-control" name="price">
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="">Descuento</label>
+                                                            <input type="number" class="form-control" name="discount">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="exampleFormControlTextarea1">Descripción</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="">Elija una imagen</label>
+                                                        <input type="file" class="form-control" name='image'>
+                                                    </div>
+                                                    <div class="mt-5 mr-5 d-flex justify-content-end">
+                                                        <button type="reset" class="btn btn-outline-secondary mr-3">Borrar</button>
+                                                        <button type="submit" class="btn btn-outline-primary">Publicar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <% } %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+
+
+            <%- include('partials/footer')  %>
+
+    </body>
+
+</html>
