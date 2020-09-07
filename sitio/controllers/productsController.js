@@ -27,7 +27,7 @@ module.exports = {
         })
         res.render('products',{
             title: "Resultado de la busqueda",
-            css:"products.css",
+            css:"index.css",
             productos:productos
         })
     },
