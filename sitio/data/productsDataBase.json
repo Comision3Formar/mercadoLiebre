@@ -145,47 +145,11 @@
     },
     {
         "id": 17,
-        "name": "A2 Pc Gamer Amd Dual Core 4gb 1tb Hdmi Usb 3.0 Mexx3",
-        "price": 29999,
-        "discount": 50,
-        "category": "Computadoras de Escritorio",
-        "description": "Una pc equipada con la ultima tecnologia te permite jugar ,\r\nalmacenar imágenes y videos, y navegar en internet y trabajar\r\ncon programas que requieren una computadora rápida.",
-        "image": "image1598283681762.jpg"
-    },
-    {
-        "id": 18,
-        "name": "Smart TV LG AI ThinQ 43UM7360PSA LED 4K 43\"",
-        "price": 59999,
-        "discount": 10,
-        "category": "TV",
-        "description": "LG es innovación y eso se ve en cada uno de sus productos tecnológicos, pensados especialmente para que tu familia y vos disfruten mucho más de la vida. Con el Smart TV 43UM7360 vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.",
-        "image": "image1598283720003.jpg"
-    },
-    {
-        "id": 19,
-        "name": "Smart TV LG AI ThinQ 43UM7360PSA LED 4K 43\"",
-        "price": 59999,
-        "discount": 10,
-        "category": "TV",
-        "description": "LG es innovación y eso se ve en cada uno de sus productos tecnológicos, pensados especialmente para que tu familia y vos disfruten mucho más de la vida. Con el Smart TV 43UM7360 vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.",
-        "image": "image1598285020686.jpg"
-    },
-    {
-        "id": 20,
-        "name": "Smart Tv 32 Pulgadas Hd",
-        "price": 20199,
+        "name": "Bicicleta Rodado 29 Mountain Bike Klatter",
+        "price": 26999,
         "discount": 5,
-        "category": "TV",
-        "description": "Somos TEDGE, una marca de Mercado Libre! Nos propusimos crear productos de tecnología con alta calidad, ofreciendo a nuestros compradores una gran variedad y los mejores precios del mercado.",
-        "image": "image1598286330216.jpg"
-    },
-    {
-        "id": 21,
-        "name": "Teléfono inalámbrico Panasonic KX-TGB110 negro",
-        "price": 3990,
-        "discount": 4,
-        "category": "Celulares - Teléfonos",
-        "description": "Desde hace más de 50 años, Panasonic se muestra comprometida a crear una vida mejor y un mundo mejor, contribuyendo continuamente a la evolución de la sociedad a través de sus productos y servicios. Debido a esto, este teléfono será el complemento perfecto para que puedas comunicarte fácilmente con tus familiares, amigos o compañeros de trabajo cuando lo necesites.",
-        "image": "image1598283541290.png"
+        "category": "Bicicletas - Ciclismo ",
+        "description": "Somos KLATTER. Creamos artículos innovadores para el hogar para ayudarte a lograr la excelencia en todo lo que te propongas. Siempre priorizando el diseño y la calidad con los mejores precios del mercado.",
+        "image": "default-image.png"
     }
 ]

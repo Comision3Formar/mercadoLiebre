@@ -10,4 +10,5 @@ router.get('/add',productsController.agregar);
 router.get('/add/form',productsController.agregar);
 router.post('/add/form',productsController.publicar);
 
+
 module.exports = router;

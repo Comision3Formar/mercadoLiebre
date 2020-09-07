@@ -1,10 +1,15 @@
 const path = require('path');
 const dbProducts = require(path.join(__dirname,'..','data','dbProducts'))
 const dbCategorias = require('../data/dbCategorias');
+const fs = require('fs');
 
 module.exports = {
     listar:function(req,res){
-        res.send(dbProducts)
+        res.render('products',{
+            title: "Productos",
+            css:"index.css",
+            productos: dbProducts
+        })
     },
     detalle:function(req,res){
         idProducto = req.params.id;
@@ -47,6 +52,23 @@ module.exports = {
         })
     },
     publicar:function(req,res){
-        res.send(req.body)
+       let lastID = 1;
+       dbProducts.forEach(producto=>{
+           if(producto.id > lastID){
+               lastID = producto.id
+           }
+       })
+       let newProduct = {
+           id:lastID +1,
+           name: req.body.name,
+           price: Number(req.body.price),
+           discount:Number(req.body.discount),
+           category:req.body.category,
+           description:req.body.description,
+           image: "default-image.png"
+       }
+       dbProducts.push(newProduct);
+       fs.writeFileSync(path.join(__dirname,"..","data","productsDataBase.json"),JSON.stringify(dbProducts),'utf-8')
+       res.redirect('/products')
     }
 }
