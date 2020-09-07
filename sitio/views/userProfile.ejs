@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <section class="perfilUsuario">
+            <div class="row perfil">
+
+                <div class="titulo col-12">
+                    <h2>
+                        <%= title %>
+                    </h2>
+                </div>
+                <div class="col-12">
+
+                    <div class="contenido">
+
+
+                        <ul class="nav nav-tabs " id="myTab" role="tablist">
+                            <li class="nav-item " role="presentation">
+                                <a class="nav-link " id="home-tab" data-toggle="tab" href="#datos" role="tab"
+                                    aria-controls="home" aria-selected="true">Mis Datos</a>
+                            </li>
+                            <li class="nav-item " role="presentation">
+                                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#productos"
+                                    role="tab" aria-controls="profile" aria-selected="false">Mis Productos</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+
+                            <div class="tab-pane fade " id="datos" role="tabpanel" aria-labelledby="home-tab">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, ut. Magni esse
+                                doloremque ipsum, ut asperiores deleniti laudantium sapiente veritatis debitis
+                                reiciendis soluta quis corporis deserunt odit beatae suscipit perspiciatis.
+                            </div>
+
+                            <div class="tab-pane fade show active " id="productos" role="tabpanel"
+                                aria-labelledby="profile-tab">
+
+                                <div class="row productos p-4">
+                                    <% productos.forEach(producto => { %>
+
+                                    <div class="col-12 col-md-4 col-xl-3">
+
+                                        <div class="contenido"
+                                            style="height: 95%; display: flex; flex-direction: column; justify-content: space-between;">
+
+                                            <figure style="display: flex; align-items: center;">
+                                                <a href="./detail/<%= producto.id %> "><img
+                                                        src="/images/products/<%- producto.image %>  " alt=" "></a>
+                                            </figure>
+                                            <%if (producto.name.length > 10) {%>
+                                            <p>
+                                                <%- producto.name.slice(0,20) + '...'%>
+                                            </p>
+                                            <%}%>
+
+                                            <div class="d-flex justify-content-around">
+                                            <form action="/products/show/<%= producto.id %>/show" method="GET">
+                                            <button class="btn btn-outline-light">
+                                                <h4 class="fas fa-info-circle text-info"></h4>
+                                            </button>
+                                            </form>
+                                            <form action="/products/show/<%= producto.id %>/edit" method="GET">
+                                                <button class="btn btn-outline-light">
+                                                    <h4 class="fas fa-edit text-primary"></h4>
+                                                </button>
+                                            </form>
+                                            <form action="/products/delete/<%= producto.id %>?_method=DELETE"
+                                                method="POST">
+                                                <button class="btn btn-outline-light">
+                                                    <h4 class="fas fa-trash-alt text-danger"></h4>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <% }) %>
+                            </div>
+                            <!--finaliza el row-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+    </div>
+
+
+
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>

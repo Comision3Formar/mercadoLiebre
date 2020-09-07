@@ -39,7 +39,7 @@ module.exports = {
             sub = req.query.sub
         }
         res.render('productAdd',{
-            title: "Resultado de la busqueda",
+            title: "Publicar Producto",
             css:"products.css",
             categorias:dbCategorias,
             categoria:categoria,
