@@ -10,5 +10,9 @@ router.get('/add',productsController.agregar);
 router.get('/add/form',productsController.agregar);
 router.post('/add/form',productsController.publicar);
 
+router.get('/show/:id/:flap?',productsController.show);
+
+router.put('/edit/:id',productsController.editar)
+router.delete('/delete/:id',productsController.eliminar)
 
 module.exports = router;
