@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head') %> 
+<body>
+    <%- include('partials/header') %> 
+
+    <div class="container">
+        <section class="login">
+            <div class="row productos">
+                <div class="titulo col-12">
+                    <h2>
+                        <%= title %>
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <div class="contenido">
+                        <div class="row">
+                            <div class="col-12 col-md-5 col-lg-6 d-flex justify-content-center p-5">
+                                <img src="/images/logo-mercado-liebre.svg" alt="">
+                            </div>
+                           <div class="col-12 col-md-7 col-lg-6 p-5">
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1"></label>
+                                  <input 
+                                  type="email" 
+                                  class="form-control 
+                                  <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":
+                                  (typeof errors != 'undefined' && errors.email)?"is-invalid":
+                                  '' %>" 
+                                  id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= (typeof old != 'undefined' && old.email)?old.email:'' %>" placeholder="email" name="email">
+                                  <small class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %> </small>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1"></label>
+                                  <input type="password" class="form-control <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid":
+                                  '' %>" id="exampleInputPassword1" placeholder="contraseña" name="pass">
+                                  <small class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %> </small>
+                                </div>
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1" name="recordar">
+                                  <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+                                </div>
+                                <div class="form-group d-flex justify-content-around mt-4">
+                                <button type="submit" class="btn btn-outline-primary">Iniciar sesión</button>
+                                <a href="/users/register"><button type="button" class="btn btn-outline-success">Creá tu cuenta</button></a>
+                              
+                            </div>
+                              </form>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <%- include('partials/footer') %> 
+</body>
+</html>

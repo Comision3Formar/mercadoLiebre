@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('partials/head') %> 
-<body>
-    <%- include('partials/header') %>    
-    <div class="container">
-        <section class="principal">
-          <div class="row detalle">
-            <div class="col-12 titulo">
-              <h2><%= title %> </h2>
-            </div>
-            <div class="contenido">
-              <div class="contenido text-left">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <figure class="text-center">
-                            <img src="/images/products/<%= producto.image %> " alt=<%= producto.image %> class="img-fluid">
-                        </figure>
-                        <p>
-                           <%= producto.description %> 
-                        </p>
-                    </div>
-                    <div class="col-12 col-lg-4 datos">
-                        <h3 class="my-4">
-                           <%= producto.name %> 
-                        </h3>
-                            <span><strike>$<%= producto.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></strike> <strong> <%= producto.discount %>  % OFF</strong></span>
-                                <h2>
-                                  $<%- (producto.price - producto.price * producto.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %> 
-                                </h2>
-                                <p><i class="fas fa-credit-card mr-3 my-4"></i>Pagá en 12 cuotas sin interés</p>
-                                <p><i class="fas fa-store mr-3 my-4"></i>Retiro gratis en locales del vendedor</p>
-                                <button>Comprar ahora</button>
-                    </div>
-                </div>
-            </div>
-            </div>
-            
-          </div>
-        </section>
-      </div>
+<%- include('partials/head') %>
 
-    <%- include('partials/footer') %> 
+<body>
+  <%- include('partials/header') %>
+  <div class="container">
+    <section class="principal">
+      <div class="row detalle">
+        <div class="col-12 titulo">
+          <h2><%= title %> </h2>
+        </div>
+        <div class="contenido">
+          <div class="contenido text-left">
+            <div class="row">
+              <div class="col-12 col-lg-8">
+                <figure class="text-center">
+                  <img src="/images/products/<%= producto.image %> " alt=<%= producto.image %> class="img-fluid">
+                </figure>
+                <p>
+                  <%= producto.description %>
+                </p>
+              </div>
+              <div class="col-12 col-lg-4 datos">
+                <h3 class="my-4">
+                  <%= producto.name %>
+                </h3>
+                <span><strike>$<%= producto.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></strike> <strong>
+                    <%= producto.discount %> % OFF</strong></span>
+                <h2>
+                  $<%- (producto.price - producto.price * producto.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %>
+                </h2>
+                <p><i class="fas fa-credit-card mr-3 my-4"></i>Pagá en 12 cuotas sin interés</p>
+                <p><i class="fas fa-store mr-3 my-4"></i>Retiro gratis en locales del vendedor</p>
+                <button>Comprar ahora</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <%- include('partials/footer') %>
 
 </body>
+
 </html>

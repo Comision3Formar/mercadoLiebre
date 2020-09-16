@@ -70,7 +70,7 @@ module.exports = {
            discount:Number(req.body.discount),
            category:req.body.category.trim(),
            description:req.body.description.trim(),
-           image: "default-image.png"
+           image: (req.files[0])?req.files[0].filename: "default-image.png"
        }
        dbProducts.push(newProduct);
        fs.writeFileSync(path.join(__dirname,"..","data","productsDataBase.json"),JSON.stringify(dbProducts),'utf-8')
