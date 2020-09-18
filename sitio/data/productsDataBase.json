@@ -151,5 +151,14 @@
         "category": "TV",
         "description": "Excelente calidad de imagen COMPRALOOOOO",
         "image": "image-1600283795055.jpg"
+    },
+    {
+        "id": 18,
+        "name": "Philco 39' SmartTV",
+        "price": 37000,
+        "discount": 10,
+        "category": "TV",
+        "description": "listo para la venta. apreveche. estar muy barato",
+        "image": "image-1600432793504.jfif"
     }
 ]

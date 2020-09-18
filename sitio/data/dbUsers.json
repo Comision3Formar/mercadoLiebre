@@ -1,3 +1,11 @@
 [
-   
+    {
+        "id": 1,
+        "nombre": "Eric",
+        "apellido": "Mena",
+        "email": "menaericdaniel@gmail.com",
+        "avatar": "avatar-1600456532601.jpg",
+        "password": "$2b$10$mcKJXzBH2wxFM00lFp4jZunGttkFUI/vMHs718EDRTbHlVf3dav6e",
+        "rol": "user"
+    }
 ]

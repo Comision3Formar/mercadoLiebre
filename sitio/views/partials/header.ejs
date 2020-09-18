@@ -22,12 +22,15 @@
         </div>
 
         <!--caja que contiene el link-->
-        <div class="col-12 col-md-4 cuotas">
-          <a href=" "
-            ><i class="fas fa-hand-holding-usd"></i> Comprá en cuotas y sin
-            tarjeta de crédito</a
-          >
-        </div>
+        <div class="col-12 col-md-4 col-lg-4 d-flex justify-content-end align-items-center cuotas">
+          <a href=""><h5 class="mr-2"><%= (locals.user)?locals.user.nick:"Invitado" %> </h5></a>
+          <% if (locals.user) { %>
+              <a href=""><img src="/images/users/<%= locals.user.avatar %> " alt="avatar" width="50px" height="50px" class="avatar"></a>
+
+          <% } else{%>
+          <a href=""><img src="/images/users/default.png" alt="" width="50px" height="50px"></a>
+          <% } %>
+      </div>
 
         <!--finaliza el div.row-->
       </div>
