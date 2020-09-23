@@ -70,20 +70,22 @@
 
           <!--barra de menu: login y registro-->
           <ul class="usuario navbar-nav">
-            <li>
-              <a href="/users/register"
-                >Creá tu cuenta <i class="far fa-address-card"></i
-              ></a>
-            </li>
-            <li>
-              <a href="/users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-            </li>
-            <li>
-              <a href="/users/profile"
-                >Mis compras <i class="fas fa-shopping-basket"></i
-              ></a>
-            </li>
-          </ul>
+            <% if (typeof user == "undefined") { %>
+                <li>
+                    <a href="/users/login">Ingresá <i class="fas fa-sign-in-alt "></i></a>
+                </li>
+                <li>
+                    <a href="/users/register">Creá tu cuenta <i class="far fa-address-card "></i></a>
+                </li>
+            <% } else{ %>
+                <li>
+                    <a href="/users/logout">Cerrar sesión <i class="fas fa-sign-in-alt "></i></a>
+                </li>
+                <li>
+                    <a href="/users/profile ">Mis compras <i class="fas fa-shopping-basket "></i></a>
+                </li>
+            <% } %>
+        </ul>
         </div>
         <!--finaliza caja contenedora del menu-->
       </nav>

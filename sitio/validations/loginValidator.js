@@ -17,12 +17,14 @@ module.exports = [
 
     body('email')
     .custom(function(value){
-        for(let i = 0; i<dbUsers.length;i++){
-            if(dbUsers[i].email != value){
-                return false
-            }
+        let usuario = dbUsers.filter(user=>{
+            return user.email == value
+        })
+        if(usuario == false){
+            return false
+        }else{
+            return true
         }
-        return true
     })
     .withMessage("El ususario no está registrado"),
 

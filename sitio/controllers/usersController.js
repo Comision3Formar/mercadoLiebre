@@ -71,10 +71,10 @@ module.exports = {
                 }
             })
             if(req.body.recordar){
-                res.cookie('userMercadoLiebre',req.session.user,{maxAge:1000*60*2})
+                res.cookie('userMercadoLiebre',req.session.user,{maxAge:1000*60*60})
             }
             //res.locals.user = req.session.user
-            console.log(res.locals.user)
+            //console.log(res.locals.user)
             res.redirect('/')
         }else{
             res.render('userLogin',{
@@ -92,6 +92,14 @@ module.exports = {
             productos: dbProducts.filter(producto =>{
                 return producto.category != "visited" && producto.category != "in-sale"
             })
+            
         })
+    },
+    logout:function(req,res){
+        req.session.destroy()
+        if(req.cookies.userMercadoLiebre){
+            res.cookie('userMercadoLiebre',' ',{maxAge:-1});
+        }
+        return res.redirect('/')
     }
 }

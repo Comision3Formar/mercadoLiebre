@@ -1,11 +1,1 @@
-[
-    {
-        "id": 1,
-        "nombre": "Eric",
-        "apellido": "Mena",
-        "email": "menaericdaniel@gmail.com",
-        "avatar": "avatar-1600456532601.jpg",
-        "password": "$2b$10$mcKJXzBH2wxFM00lFp4jZunGttkFUI/vMHs718EDRTbHlVf3dav6e",
-        "rol": "user"
-    }
-]
+[{"id":1,"nombre":"Eric","apellido":"Mena","email":"menaericdaniel@gmail.com","avatar":"avatar-1600456532601.jpg","password":"$2b$10$mcKJXzBH2wxFM00lFp4jZunGttkFUI/vMHs718EDRTbHlVf3dav6e","rol":"user"},{"id":2,"nombre":"Gabriel","apellido":"Muñoz","email":"gabriel@muñoz.com","avatar":"avatar-1600887962758.jpg","password":"$2b$10$JH5g4x61fS4At0cq8mk0jucrl4ebwzkcm.BPkIiGsGHQWwzdk1ejW","rol":"user"},{"id":3,"nombre":"Ramiro","apellido":"Cano","email":"ramiro@cano.com","avatar":"avatar-1600888062028.jpg","password":"$2b$10$LmlqStebde5LKu/fEJEtCORXNxyFqHLi71OIv1kteyHbyaklZaSGa","rol":"user"},{"id":4,"nombre":"Javier","apellido":"Zambrano","email":"javier@zambrano.com","avatar":"avatar-1600889305243.jpg","password":"$2b$10$.yn8LEoJObD0mgAxjDDuDe0bzokdrJd8YWo/Vg6yV7S6HasRUVC3W","rol":"user"}]
