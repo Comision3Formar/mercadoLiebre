@@ -18,6 +18,8 @@ module.exports = {
         })
     },
     processRegister:function(req,res){
+        //res.send(req.body)
+        //res.send(req.files)
         let errors = validationResult(req);
         let lastID = 0;
         if(dbUsers.length != 0){
