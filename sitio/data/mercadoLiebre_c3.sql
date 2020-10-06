@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mercadoLiebre_c3
+-- Schema mercadoLiebre2.0_c3
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mercadoLiebre_c3
+-- Schema mercadoLiebre2.0_c3
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mercadoLiebre_c3` DEFAULT CHARACTER SET utf8 ;
-USE `mercadoLiebre_c3` ;
+CREATE SCHEMA IF NOT EXISTS `mercadoLiebre2.0_c3` DEFAULT CHARACTER SET utf8 ;
+USE `mercadoLiebre2.0_c3` ;
 
 -- -----------------------------------------------------
--- Table `mercadoLiebre_c3`.`users`
+-- Table `mercadoLiebre2.0_c3`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`users` (
+CREATE TABLE IF NOT EXISTS `mercadoLiebre2.0_c3`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `apellido` VARCHAR(45) NOT NULL,
@@ -40,9 +40,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mercadoLiebre_c3`.`categories`
+-- Table `mercadoLiebre2.0_c3`.`categories`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`categories` (
+CREATE TABLE IF NOT EXISTS `mercadoLiebre2.0_c3`.`categories` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `imagen` VARCHAR(45) NOT NULL,
@@ -51,9 +51,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mercadoLiebre_c3`.`stores`
+-- Table `mercadoLiebre2.0_c3`.`stores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`stores` (
+CREATE TABLE IF NOT EXISTS `mercadoLiebre2.0_c3`.`stores` (
   `id` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `logo` VARCHAR(45) NOT NULL,
@@ -64,16 +64,16 @@ CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`stores` (
   INDEX `idUsuario_idx` (`id_usuario` ASC),
   CONSTRAINT `idUsuario`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `mercadoLiebre_c3`.`users` (`id`)
+    REFERENCES `mercadoLiebre2.0_c3`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mercadoLiebre_c3`.`products`
+-- Table `mercadoLiebre2.0_c3`.`products`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`products` (
+CREATE TABLE IF NOT EXISTS `mercadoLiebre2.0_c3`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   `precio` DECIMAL(5,2) NOT NULL,
@@ -89,21 +89,21 @@ CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`products` (
   INDEX `idTienda_idx` (`id_tienda` ASC),
   CONSTRAINT `idCategoria`
     FOREIGN KEY (`id_categoria`)
-    REFERENCES `mercadoLiebre_c3`.`categories` (`id`)
+    REFERENCES `mercadoLiebre2.0_c3`.`categories` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `idTienda`
     FOREIGN KEY (`id_tienda`)
-    REFERENCES `mercadoLiebre_c3`.`stores` (`id`)
+    REFERENCES `mercadoLiebre2.0_c3`.`stores` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mercadoLiebre_c3`.`carts`
+-- Table `mercadoLiebre2.0_c3`.`carts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`carts` (
+CREATE TABLE IF NOT EXISTS `mercadoLiebre2.0_c3`.`carts` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_usuario` INT NOT NULL,
   `id_producto` INT NOT NULL,
@@ -115,12 +115,12 @@ CREATE TABLE IF NOT EXISTS `mercadoLiebre_c3`.`carts` (
   INDEX `id_producto_idx` (`id_producto` ASC),
   CONSTRAINT `id_usuario`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `mercadoLiebre_c3`.`users` (`id`)
+    REFERENCES `mercadoLiebre2.0_c3`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `id_producto`
     FOREIGN KEY (`id_producto`)
-    REFERENCES `mercadoLiebre_c3`.`products` (`id`)
+    REFERENCES `mercadoLiebre2.0_c3`.`products` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
