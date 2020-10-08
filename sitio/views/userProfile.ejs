@@ -1,98 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('partials/head') %>
+<script src="/javascripts/userProfile.js"></script>
 
 <body>
-	<%- include('partials/header') %>
-	<div class="container">
-		<section class="perfilUsuario">
-			<div class="row principal">
+  <%- include('partials/header') %>
+  <div class="container">
+    <section class="perfilUsuario">
+      <div class="row principal">
 
-				<div class="titulo col-12">
-					<h2>
-						<%= title %>
-					</h2>
-				</div>
-				<div class="col-12">
+        <div class="titulo col-12">
+          <h2>
+            <%= title %>
+          </h2>
+        </div>
+        <div class="col-12">
 
-					<div class="contenido">
-
-
-						<ul class="nav nav-tabs " id="myTab" role="tablist">
-							<li class="nav-item " role="presentation">
-								<a class="nav-link " id="home-tab" data-toggle="tab" href="#datos" role="tab"
-									aria-controls="home" aria-selected="true">Mis Datos</a>
-							</li>
-							<li class="nav-item " role="presentation">
-								<a class="nav-link active" id="profile-tab" data-toggle="tab" href="#productos"
-									role="tab" aria-controls="profile" aria-selected="false">Mis Productos</a>
-							</li>
-						</ul>
-						<div class="tab-content" id="myTabContent">
-
-							<div class="tab-pane fade " id="datos" role="tabpanel" aria-labelledby="home-tab">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, ut. Magni esse
-								doloremque ipsum, ut asperiores deleniti laudantium sapiente veritatis debitis
-								reiciendis soluta quis corporis deserunt odit beatae suscipit perspiciatis.
-							</div>
-
-							<div class="tab-pane fade show active " id="productos" role="tabpanel"
-								aria-labelledby="profile-tab">
-
-								<div class="row productos p-4">
-									<% productos.forEach(producto => { %>
-
-									<div class="col-12 col-md-4 col-xl-3">
-
-										<div class="contenido"
-											style="height: 95%; display: flex; flex-direction: column; justify-content: space-between;">
-
-											<figure style="display: flex; align-items: center;">
-												<a href="./detail/<%= producto.id %> "><img
-														src="/images/products/<%- producto.image %>  " alt=" "></a>
-											</figure>
-
-											<p>
-												<%= producto.name%>
-											</p>
+          <div class="contenido">
 
 
-											<div class="d-flex justify-content-around">
-												<form action="/products/show/<%= producto.id %>/show" method="GET">
-													<button class="btn btn-outline-light">
-														<h4 class="fas fa-info-circle text-info"></h4>
-													</button>
-												</form>
-												<form action="/products/show/<%= producto.id %>/edit" method="GET">
-													<button class="btn btn-outline-light">
-														<h4 class="fas fa-edit text-primary"></h4>
-													</button>
-												</form>
-												<form action="/products/delete/<%= producto.id %>?_method=DELETE"
-													method="POST">
-													<button class="btn btn-outline-light" type="submit">
-														<h4 class="fas fa-trash-alt text-danger"></h4>
-													</button>
-												</form>
-											</div>
-										</div>
-									</div>
+            <ul class="nav nav-tabs " id="myTab" role="tablist">
+              <li class="nav-item " role="presentation">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="home"
+                  aria-selected="true">Mis Datos</a>
+              </li>
+              <li class="nav-item " role="presentation">
+                <a class="nav-link " id="profile-tab" data-toggle="tab" href="#productos" role="tab"
+                  aria-controls="profile" aria-selected="false">Mis Productos</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
 
-									<% }) %>
-								</div>
-								<!--finaliza el row-->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
+              <div class="tab-pane fade show active p-4" id="datos" role="tabpanel" aria-labelledby="home-tab">
+               
+                    <form action="/users/updateProfile/<%= usuario.id %> ?_method=PUT" method="POST"
+                      enctype="multipart/form-data">
+                      <div class="form-row">
+                        <div class="col-12 col-md-4 mt-3 d-flex flex-column align-items-center">
+                          <% if (usuario.rol == "store") { %>
+                          <img src="/images/logos/<%= usuario.avatar %> " class="avatarImg" alt="avatar" width="75%"
+                            style="object-fit: cover; object-position: top;">
+                          <% } else { %>
+                          <img src="/images/users/<%= usuario.avatar %> " class="avatarImg" alt="avatar" width="75%"
+                            style="object-fit: cover; object-position: top;">
+                          <% } %>
+                          <div class="form-group w-75">
+                            <input type="file" class="form-control" id="avatarImput" name="avatar">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-8 ">
+                          <div class="form-row mt-2">
+                            <div class="form-group col-12 col-md-6 ">
+                              <label for="inputNombre">Nombre</label>
+                              <input type="text" name="nombre" class="form-control" id="inputNombre"
+                                value="<%= usuario.nombre %>" disabled>
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <label for="inputApellido">Apellido</label>
+                              <input type="text" name="apellido" class="form-control" id="inputApellido"
+                                value="<%= usuario.apellido %>" disabled>
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <label for="imputEmail">Email</label>
+                              <input type="email" name="email" class="form-control" id="imputEmail"
+                                value=<%= usuario.email %> disabled>
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <label for="imputEmail">Fecha de nacimiento</label>
+                              <input type="date" name="fecha" class="form-control" id="imputEmail"
+                                value=<%= usuario.fecha %>>
+                            </div>
+                            <div class="form-group col-12">
+                              <label for="inputAddress2">Dirección</label>
+                              <input type="text" name="direccion" class="form-control" id="inputAddress2"
+                                value="<%= usuario.direccion %>">
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <label for="imputCiudad">Ciudad</label>
+                              <input type="text" name="ciudad" class="form-control" id="inputCiudad"
+                                value="<%= usuario.ciudad %>">
+                              <select class="form-control" id="ciudadSelect" style="display: none;"></select>
+
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <label for="inputProvincia">Provincia</label>
+                              <input type="text" name="provincia" class="form-control" id="inputProvincia"
+                                value="<%= usuario.provincia %>">
+                              <select class="form-control" id="provinciaSelect" style="display: none;">
+                              </select>
+                            </div>
+                          </div>
+                          <div class="d-md-flex justify-content-end mt-5">
+                            <button type="button" class="btn-sm btn-secondary m-1"><a href="/" class="text-light">Salir
+                                sin
+                                guardar</a></button>
+                            <button type="submit" class="btn-sm btn-primary m-1">Actualizar datos</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                
+                    <div class="col-12 col-md-4 d-flex justify-content-center">
+                      <form action="/users/delete/<%= usuario.id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn-sm btn-danger">Darse de baja</button>
+                      </form>
+                    </div>
+
+                  </div>
+             
+
+
+              <div class="tab-pane fade  " id="productos" role="tabpanel" aria-labelledby="profile-tab">
+
+                <div class="row principal p-4">
+
+                  <div class="col-12 col-md-4 col-xl-3">
+
+                    <div class="contenido">
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 
 
 
-	<%- include('partials/footer') %>
+  <%- include('partials/footer') %>
+
 </body>
 
 </html>

@@ -8,6 +8,7 @@ const {validationResult} = require('express-validator');
 const dbProducts = require(path.join(__dirname,'..','data','dbProducts'))
 const dbUsers = require(path.join(__dirname,'..','data','dbUsers'))
 
+const db = require('../database/models');
 
 
 module.exports = {
@@ -18,31 +19,26 @@ module.exports = {
         })
     },
     processRegister:function(req,res){
-        //res.send(req.body)
-        //res.send(req.files)
         let errors = validationResult(req);
-        let lastID = 0;
-        if(dbUsers.length != 0){
-            dbUsers.forEach(user => {
-                if(user.id > lastID){
-                    lastID = user.id
-                }
-            })
-        }
+        
         if(errors.isEmpty()){
-            let newUser = {
-                id: lastID + 1,
+
+            db.Users.create({
                 nombre: req.body.nombre.trim(),
                 apellido: req.body.apellido.trim(),
                 email: req.body.email.trim(),
-                avatar: (req.files[0])?req.files[0].filename:"default.png",
                 password:bcrypt.hashSync(req.body.pass,10),
+                avatar: (req.files[0])?req.files[0].filename:"default.png",
                 rol:"user"
-            }
-            dbUsers.push(newUser);
-            fs.writeFileSync(path.join(__dirname,'..','data','dbUsers.json'),JSON.stringify(dbUsers),'utf-8')
+            })
+            .then(usuario => {
+                //console.log(usuario)
+                return res.redirect('/users/login')
+            })
+            .catch(err => {
+                res.send(err)
+            })
     
-            return res.redirect('/users/login')
         }else{
             res.render('userRegister',{
                 title:"Registro de Usuario",
@@ -62,22 +58,30 @@ module.exports = {
     processLogin:function(req,res){
         let errors = validationResult(req);
         if(errors.isEmpty()){
-            dbUsers.forEach(user => {
-                if(user.email == req.body.email){
-                    req.session.user = {
-                        id: user.id,
-                        nick: user.nombre + " " + user.apellido,
-                        email: user.email,
-                        avatar:user.avatar
-                    }
+
+            db.Users.findOne({
+                where : {
+                    email : req.body.email
                 }
             })
-            if(req.body.recordar){
-                res.cookie('userMercadoLiebre',req.session.user,{maxAge:1000*60*60})
-            }
-            //res.locals.user = req.session.user
-            //console.log(res.locals.user)
-            res.redirect('/')
+            .then( user => {
+                req.session.user = {
+                    id : user.id,
+                    nick : user.nombre + " " + user.apellido,
+                    email : user.email,
+                    avatar : user.avatar,
+                    rol : user.rol
+                }
+                if(req.body.recordar){
+                    res.cookie('userMercadoLiebre',req.session.user,{maxAge:1000*60*60})
+                }
+                res.locals.user = req.session.user
+                return res.redirect('/')
+            })
+            .catch( err => {
+                res.send(err)
+            })
+           
         }else{
             res.render('userLogin',{
                 title: "Ingresá a tu cuenta",
@@ -88,14 +92,17 @@ module.exports = {
         }
     },
     profile:function(req,res){
-        res.render('userProfile',{
-            title:"Perfil de usuario",
-            css: "profile.css",
-            productos: dbProducts.filter(producto =>{
-                return producto.category != "visited" && producto.category != "in-sale"
+        db.Users.findByPk(req.session.user.id)
+        .then(user => {
+            res.render('userProfile',{
+                title:"Perfil de usuario",
+                css: "profile.css",
+                usuario : user
             })
-            
         })
+        .catch( error => {
+            res.send(error)
+        })   
     },
     logout:function(req,res){
         req.session.destroy()
