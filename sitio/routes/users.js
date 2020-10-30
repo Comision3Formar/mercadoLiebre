@@ -16,7 +16,10 @@ router.get('/login',usersController.login);
 router.post('/login',loginValidator,usersController.processLogin);
 
 router.get('/profile',usersController.profile);
+router.put('/updateProfile/:id',upImagesUsers.any(),usersController.updateProfile);
 
 router.get('/logout',usersController.logout);
+
+router.delete('/delete/:id',usersController.delete);
 
 module.exports = router;

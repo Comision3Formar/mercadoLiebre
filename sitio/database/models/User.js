@@ -53,9 +53,23 @@ module.exports = (sequelize,dataTypes) => {
         underscored : true
     }
 
-
-
     const User = sequelize.define(alias,cols,config);
+
+    User.associate = function(models){
+        
+        User.hasOne(models.Stores,{ //un usuario tiene una tienda (1:1)
+            as:"tienda",
+            foreignKey:"id_usuario"
+        })
+
+        User.belongsToMany(models.Products,{ //un usuario tiene muchos productos (N:M)
+            as : 'productos',
+            through : 'carts',
+            foreignKey : 'id_usuario',
+            otherKey : 'id_producto',
+            timestamps : false
+        })
+    }
 
     return User;
 }

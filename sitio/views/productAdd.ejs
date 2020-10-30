@@ -1,124 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-<%- include('partials/head')  %>
-
-<body>
-    <%- include('partials/header')  %>
+<html lang="es">
+  <%- include('partials/head') %>
+  <script src="/javascripts/productAdd.js"></script>
+  <body>
+    <%- include('partials/header') %>
 
     <div class="container">
-        <section class="addProduct">
-            <div class="row principal">
-                <div class="titulo col-12">
-                    <h2>
-                        <%= title %>
-                    </h2>
+      <section class="login">
+        <div class="row principal">
+          <div class="titulo col-12">
+
+            <h2><%= title %></h2>
+
+          </div>
+          <div class="col-12">
+            <div class="contenido">
+              <div class="row py-3 px-5">
+                <div class="col-12 col-md-5 col-lg-6 col-xl-4 d-flex flex-column justify-content-center">
+                  <figure>
+                  <img id="vistaPrevia" src="" alt="" class="w-75"/>
+                  </figure>
                 </div>
-                <div class="col-12">
-                    <div class="contenido text-left">
-                        <div class="row">
-                            <div class="col-12 col-md-5 col-xl-5 categorias">
-                                <h5 class="mb-3">Categorias</h5>
-                                <!--inicio la iteracion sobre las categorias-->
-                                <% categorias.forEach(categoria => { %>
-                                <div class="accordion" id="accordionExample">
-                                    <div class="">
-                                        <div class="card-header p-0" id="headingOne<%= categoria.id %> ">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-outline-dark btn-block text-left" type="button"
-                                                    data-toggle="collapse" data-target="#collapseOne<%= categoria.id %>"
-                                                    aria-expanded="true" aria-controls="collapseOne<%= categoria.id %>">
-                                                    <%= categoria.name %>
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <!--inicio la iteracion sobre las sub-categorias-->
+                <div class="col-12 col-md-7 col-lg-6 col-xl-8 ">
+                  <form action="" method="POST" enctype="multipart/form-data" id="productAdd">
 
+                    <div class="form-row">
 
-                                        <div id="collapseOne<%= categoria.id %>" class="collapse"
-                                            aria-labelledby="headingOne<%= categoria.id %> "
-                                            data-parent="#accordionExample">
-                                            <% categoria.sub.forEach(sub => { %>
-                                            <!--<div class="card-body">
-                                                               
-                                                            </div>-->
-                                            <div class="card">
-                                                <ul class="list-group list-group-flush ">
-                                                    <li class="list-group-item list-group-item-dark p-2">
-                                                        <a href="/products/add/form/?categoria=<%= categoria.name %>&sub=<%=sub %> "
-                                                            class="ml-2">
-                                                            <%= sub %>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!--finalizo la iteracion de subcategorias-->
-                                            <% }) %>
-                                        </div>
-                                    </div>
+                      <div class="form-group col-12 col-xl-6">
+                        <label for="Nombre del producto"></label>
+                        <input type="text"
+                        class="form-control <%= (typeof old != 'undefined' && old.nombre)?"is-valid":(typeof errors != 'undefined' && errors.nombre)?"is-invalid": ""  %>"
+                        id="nombre"  name="nombre"  value="<%= (typeof old != 'undefined' && old.nombre)?old.nombre:'' %>" placeholder="nombre del producto"/>
+                        <small id="errorNombre" class="text-danger"><%= (typeof errors != 'undefined' && errors.nombre)?errors.nombre.msg: "" %> </small>
+                      </div>
 
-                                </div>
-                                <!--finalizo la iteración de categorias-->
-                                <% }) %>
+                      <div class="form-group col-12 col-xl-6">
+                        <label for="Titulo"></label>
+                        <select name="categoria" id="categoria" class="form-control <%= (typeof old != 'undefined' && old.categoria)?"is-valid":(typeof errors != 'undefined' && errors.categoria)?"is-invalid": ""  %>">
+                          <option value="">Eligí la categoría</option>
+                          <% if (typeof oldCategoria != 'undefined') { %>
+                              <option value="<%= old.categoria %> " selected><%= oldCategoria %> </option>
+                          <% } %>
+                          <% categorias.forEach(categoria => { %>
+                              <option value="<%= categoria.id %>"><%= categoria.nombre %> </option>
+                          <% }) %>>
+                        </select>
+                        <small id="errorCategoria" class="text-danger"><%= (typeof errors != 'undefined' && errors.categoria)?errors.categoria.msg: "" %> </small>
+                      </div>
 
-                            </div>
-                            <div class="col-12 col-md-7 col-xl-7 formulario">
-                                <% if (categoria!=undefined) { %>
-
-                                <div class="">
-                                    <h5 class="mb-3">Datos del Producto</h5>
-                                    <form action="" method="POST" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <label for="exampleFormControlInput1">Categoría</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                value="<%= sub%> " name="category">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlInput1">Titulo de la publicación</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="" name="name">
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <label for="">Precio</label>
-                                                <input type="number" class="form-control" name="price">
-                                            </div>
-                                            <div class="col">
-                                                <label for="">Descuento</label>
-                                                <input type="number" class="form-control" name="discount">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mt-3">
-                                            <label for="exampleFormControlTextarea1">Descripción</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                name="description"></textarea>
-                                        </div>
-                                        <div class="form-group mt-3">
-                                            <label for="">Elija una imagen</label>
-                                            <input type="file" class="form-control" name='image'>
-                                        </div>
-                                        <div class="mt-5 mr-5 d-flex justify-content-end">
-                                            <button type="reset" class="btn btn-outline-secondary mr-3">Borrar</button>
-                                            <button type="submit" class="btn btn-outline-primary">Publicar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <% } %>
-
-                            </div>
-                        </div>
                     </div>
+
+                
+                    <div class="form-row">
+                      <div class="form-group col-12 col-xl-6">
+                        <label for="precio"></label>
+                        <input type="number"
+                        class="form-control <%= (typeof old != 'undefined' && old.precio && !errors.precio)?"is-valid":(typeof errors != 'undefined' && errors.precio)?"is-invalid": ""  %>"
+                        id="precio" value="<%= (typeof old != 'undefined' && old.precio)?old.precio:'' %>" placeholder="precio" name="precio" min=1 />
+                        <small id="errorPrecio" class="text-danger"><%= (typeof errors != 'undefined' && errors.precio)?errors.precio.msg: "" %> </small>
+                      </div>
+
+                      <div class="form-group col-12 col-xl-6">
+                        <label for="descuento"></label>
+                        <input type="number"
+                        class="form-control <%= (typeof old != 'undefined' && old.descuento && !errors.descuento)?"is-valid":(typeof errors != 'undefined' && errors.descuento)?"is-invalid": ""  %>"
+                        id="descuento" value="<%= (typeof old != 'undefined' && old.descuento)?old.descuento:'' %>" placeholder="descuento" name="descuento" min=1 />
+                        <small class="text-danger" id="errorDescuento"><%= (typeof errors != 'undefined' && errors.descuento)?errors.descuento.msg: "" %> </small>
+                      </div>
+
+                      <div class="form-group col-12">
+                        <label for="descripcion"></label>
+                        <textarea name="descripcion" id="descripcion" cols="10" rows="5" class="form-control <%= (typeof old != 'undefined' && old.descripcion && !errors.descripcion)?"is-valid":(typeof errors != 'undefined' && errors.descripcion)?"is-invalid": ""  %>"><%= (typeof old != 'undefined' && old.descripcion)?old.descripcion:'' %></textarea>        
+                        <small id="errorDescripcion" class="text-danger"><%= (typeof errors != 'undefined' && errors.descripcion)?errors.descripcion.msg: "" %> </small>
+                      </div>
+                    </div>
+                 
+                    <div class="form-row">
+                        <div class="form-group col-12 col-xl-6">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input " id="imagen" lang="en" name="imagen">
+                              <label class="custom-file-label" for="customFileLang">Imagenes</label>
+                              <small id="errorImagen" class="text-danger"><%= (typeof errors != 'undefined' && errors.imagen)?errors.imagen.msg: "" %> </small>
+                            </div>
+                          </div>
+                        <div class="col-12 col-xl-6">
+                          <button type="submit" class="btn btn-primary">
+                            Guardar
+                          </button>
+                        </div>
+
+                    </div>
+                    
+                    </div>
+                  </form>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </div>
-
-
-
-
-
-    <%- include('partials/footer')  %>
-
-</body>
-
+    
+    <%- include('partials/footer') %>
+  </body>
 </html>

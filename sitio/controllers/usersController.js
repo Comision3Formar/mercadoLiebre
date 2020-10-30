@@ -47,7 +47,6 @@ module.exports = {
                 old:req.body
             })
         }
-       
     },
     login:function(req,res){
         res.render('userLogin',{
@@ -102,7 +101,49 @@ module.exports = {
         })
         .catch( error => {
             res.send(error)
-        })   
+        })
+    },
+    updateProfile:function(req,res){
+        db.Users.update({
+                fecha: req.body.fecha,
+                avatar:(req.files[0])?req.files[0].filename:req.session.user.avatar,
+                direccion: req.body.direccion,
+                ciudad: req.body.ciudad,
+                provincia: req.body.provincia
+            },
+            {
+                where : {
+                    id : req.params.id
+                }
+        })
+        .then( result => {
+            console.log(result)
+            return res.redirect('/users/profile')
+        })
+        .catch( err => {
+            res.send(err)
+        })
+    },
+    delete: function(req,res){
+       
+        db.Users.destroy({
+            where : {
+                id : req.params.id
+            }
+        })
+        .then( result => {
+            console.log(result)
+            
+            req.session.destroy();
+            if(req.cookies.userMercadoLiebre){ //chequeo que la cookie exista
+                res.cookie('userMercadoLiebre','',{maxAge:-1}); //borro la cookie
+            }
+            return res.redirect('/')
+            
+        })
+        .catch( error => {
+            res.send(error)
+        })
     },
     logout:function(req,res){
         req.session.destroy()

@@ -52,6 +52,16 @@ module.exports = [
     })
     .withMessage("Las constraseñas no coiciden"),
 
+    body('avatar')
+    .custom((value,{req}) =>{
+        if(req.fileValidationError){
+            return false
+        }else{
+            return true
+        }
+    })
+    .withMessage("Solo se permite png, jpg, jpeg, gif"),
+
     check('bases')
     .isString("on")
     .withMessage("Debes aceptar las bases y condiciones")

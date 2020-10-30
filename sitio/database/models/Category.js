@@ -25,6 +25,14 @@ module.exports = (sequelize,dataTypes) => {
 
     const Category = sequelize.define(alias,cols,config);
 
+    Category.associate = function(models){ 
+
+        Category.hasMany(models.Products,{ //una categoria tiene muchos productos (1:M)
+            as : "productos",
+            foreignKey : "id_categoria"
+        })
+    }
+
     return Category
 
 }

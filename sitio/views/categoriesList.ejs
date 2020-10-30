@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %> 
+<body>
+    <%- include('partials/header') %> 
+    <div class="container">
+        <section class="listadoCategorias">
+            <div class="row principal">
+
+                <div class="titulo col-12">
+                    <h2>
+                        <%= title %>
+                    </h2>
+                </div>
+                <% categorias.forEach(categoria => { %>
+
+                    <div class="col-12 col-md-6 col-lg-3 col-xl-2">
+
+                        <div class="contenido p-3">
+                            <figure>
+                                <img src="/images/logos/<%= categoria.imagen %>  " alt=" ">
+                            </figure>
+                            <span><%= categoria.nombre %> </span>           
+                        </div>
+
+                    </div>
+
+                    <% }) %>
+            </div>
+        </section>
+    </div>
+
+
+    <%- include('partials/footer') %> 
+
+</body>
+</html>

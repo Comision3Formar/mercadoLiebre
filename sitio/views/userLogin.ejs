@@ -25,8 +25,8 @@
                                   <input 
                                   type="email" 
                                   class="form-control 
-                                  <%= (typeof old != 'undefined' && old.email && !errors.email)?"is-valid":
-                                  (typeof errors != 'undefined' && errors.email)?"is-invalid":
+                                  <%= (typeof old != 'undefined' && old.email && !errors.email &&!errors.pass)?"is-valid":
+                                  (typeof errors != 'undefined' && errors.pass)?"is-invalid":
                                   '' %>" 
                                   id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= (typeof old != 'undefined' && old.email)?old.email:'' %>" placeholder="email" name="email">
                                   <small class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %> </small>
