@@ -18,11 +18,11 @@
 						<div class="row py-3 px-5">
 							<div class="col-12 col-md-5 col-lg-6 col-xl-4 d-flex flex-column justify-content-center">
 								<figure>
-									<img src="/images/logo-mercado-liebre.svg" alt="" class="w-75" />
+									<img id="vistaPrevia" src="" alt="" class="w-75" />
 								</figure>
 							</div>
 							<div class="col-12 col-md-7 col-lg-6 col-xl-8 ">
-								<form action="" method="POST" enctype="multipart/form-data">
+								<form action="" method="POST" enctype="multipart/form-data" id="register">
 									<div class="form-row">
 
 										<div class="form-group col-12 col-xl-6">
@@ -33,7 +33,7 @@
 												value="<%= (typeof old != 'undefined' && old.nombre)?old.nombre:'' %>"
 												placeholder="nombre" />
 											<small
-												class="text-danger"><%= (typeof errors != 'undefined' && errors.nombre)?errors.nombre.msg: "" %>
+												class="text-danger" id="errorNombre"><%= (typeof errors != 'undefined' && errors.nombre)?errors.nombre.msg: "" %>
 											</small>
 										</div>
 
@@ -45,7 +45,7 @@
 												value="<%= (typeof old != 'undefined' && old.apellido)?old.apellido:'' %>"
 												placeholder="apellido" name="apellido" />
 											<small
-												class="text-danger"><%= (typeof errors != 'undefined' && errors.apellido)?errors.apellido.msg: "" %>
+												class="text-danger" id="errorApellido"><%= (typeof errors != 'undefined' && errors.apellido)?errors.apellido.msg: "" %>
 											</small>
 										</div>
 
@@ -58,7 +58,7 @@
 												class="form-control <%= (typeof errors != 'undefined' && errors.pass)?"is-invalid": ""  %>"
 												id="pass" placeholder="contraseña" name="pass" />
 											<small
-												class="text-danger"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %>
+												class="text-danger" id="errorPass"><%= (typeof errors != 'undefined' && errors.pass)?errors.pass.msg: "" %>
 											</small>
 										</div>
 
@@ -68,7 +68,7 @@
 												class="form-control <%= (typeof errors != 'undefined' && errors.pass2)?"is-invalid": ""  %>"
 												id="pass2" placeholder="reingresar contraseña" name="pass2" />
 											<small
-												class="text-danger"><%= (typeof errors != 'undefined' && errors.pass2)?errors.pass2.msg: "" %>
+												class="text-danger" id="errorPass2"><%= (typeof errors != 'undefined' && errors.pass2)?errors.pass2.msg: "" %>
 											</small>
 
 										</div>
@@ -83,18 +83,18 @@
 												value="<%= (typeof old != 'undefined' && old.email)?old.email:'' %>"
 												placeholder="email" name="email" />
 											<small
-												class="text-danger"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %>
+												class="text-danger" id="errorEmail"><%= (typeof errors != 'undefined' && errors.email)?errors.email.msg: "" %>
 											</small>
 										</div>
 
 										<div class="form-group col-12 col-xl-6">
 											<div class="custom-file mt-4">
-												<input type="file" class="custom-file-input " id="customFileLang"
-													lang="es" name="avatar">
-												<label class="custom-file-label" for="customFileLang">Seleccionar
+												<input type="file" class="custom-file-input " id="imagen"
+													lang="es" name="avatar" accept="image/*">
+												<label class="custom-file-label" for="imagen">Seleccionar
 													Archivo</label>
 												<small
-													class="text-danger"><%= (typeof avatar != 'undefined')?avatar: "" %>
+													class="text-danger" id="errorImagen"><%= (typeof avatar != 'undefined')?avatar: "" %>
 												</small>
 											</div>
 										</div>
@@ -105,18 +105,19 @@
 											<div class="custom-control custom-checkbox">
 												<input type="checkbox"
 													class="custom-control-input <%= (typeof old != 'undefined' && old.bases)?"is-valid":(typeof errors != 'undefined' && errors.bases)?"is-invalid": ""  %>"
-													id="customCheck1" name="bases">
-												<label class="custom-control-label" for="customCheck1">acepto las bases
+													id="bases" name="bases">
+												<label class="custom-control-label" for="bases">acepto las bases
 													y
 													condiciones</label><br>
 												<a href="" class="text-info">ver bases y condiciones</a><br>
 
 												<small
-													class="text-danger"><%= (typeof errors != 'undefined' && errors.bases)?errors.bases.msg: "" %>
+													class="text-danger" id="errorBases"><%= (typeof errors != 'undefined' && errors.bases)?errors.bases.msg: "" %>
 												</small>
 											</div>
 										</div>
 										<div class="col-12 col-lg-6 mt-2">
+											<span id="msgError" class="text-danger"></span>
 											<button type="submit" class="btn btn-primary">
 												Registrarse
 											</button>
