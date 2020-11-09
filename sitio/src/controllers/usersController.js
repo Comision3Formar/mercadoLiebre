@@ -99,6 +99,7 @@ module.exports = {
             res.render('userProfile',{
                 title:"Perfil de usuario",
                 css: "profile.css",
+                script : "userProfile.js",
                 usuario : user
             })
         })

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('partials/head') %>
-<script src="/javascripts/userProfile.js"></script>
 
 <body>
   <%- include('partials/header') %>
@@ -72,14 +71,16 @@
                             </div>
                             <div class="form-group col-12">
                               <label for="inputAddress2">Dirección</label>
-                              <input type="text" name="direccion" class="form-control" id="inputAddress2"
+                              <input type="text" name="direccion" class="form-control" id="inputDireccion"
                                 value="<%= usuario.direccion %>">
                             </div>
                             <div class="form-group col-12 col-md-6">
                               <label for="imputCiudad">Ciudad</label>
                               <input type="text" name="ciudad" class="form-control" id="inputCiudad"
                                 value="<%= usuario.ciudad %>">
-                              <select class="form-control" id="ciudadSelect" style="display: none;"></select>
+                              <select class="form-control" id="ciudadSelect" style="display: none;">
+                                <option>Seleccione su localidad... </option>
+                              </select>
 
                             </div>
                             <div class="form-group col-12 col-md-6">
@@ -87,6 +88,7 @@
                               <input type="text" name="provincia" class="form-control" id="inputProvincia"
                                 value="<%= usuario.provincia %>">
                               <select class="form-control" id="provinciaSelect" style="display: none;">
+                                <option value="">Seleccione su provincia...</option>
                               </select>
                             </div>
                           </div>
